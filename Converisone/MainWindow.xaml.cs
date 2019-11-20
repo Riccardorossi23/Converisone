@@ -32,13 +32,38 @@ namespace Converisone
             string n = txtValori.Text;
             if (cmbName.SelectedIndex == 0)
             {
-                int ris = Convert.ToInt32(n, 2);
-                TxtConverti.Text= ris.ToString(); 
+                string valore = txtValori.Text;
+                int ris = 0;
+                int exp = 0;
+                for(int i=valore.Length-1;i>=0;i--)
+                {
+                    if (valore[i] == '1')
+                        ris += (int)Math.Pow(2, exp);
+                }
+                TxtConverti.Text = $"{ris}";
+                //int ris = Convert.ToInt32(n, 2);
+               // TxtConverti.Text= ris.ToString(); 
             }
             else if(cmbName.SelectedIndex==1)
             {
                 int a = int.Parse(n);
-                string ris = Convert.ToString(a,2);
+                string ris = " ";
+                int mezzo = a;
+                do
+                {
+                    if (mezzo % 2 == 0)
+                    {
+                        mezzo = mezzo / 2;
+                        ris = " " + "0" + ris;
+                    }
+                    else
+                    {
+                        mezzo = mezzo / 2;
+                        ris = " " + "1" + ris;
+                    }
+
+                } while (mezzo != 0);
+                //string ris = Convert.ToString(a,2);
                 TxtConverti.Text = ris.ToString();
             }
        
