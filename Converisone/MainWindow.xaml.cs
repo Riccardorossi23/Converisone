@@ -25,7 +25,7 @@ namespace Converisone
             InitializeComponent();
         }
 
-       
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -35,16 +35,19 @@ namespace Converisone
                 string valore = txtValori.Text;
                 int ris = 0;
                 int exp = 0;
-                for(int i=valore.Length-1;i>=0;i--)
+                for (int i = valore.Length - 1; i >= 0; i--)
                 {
                     if (valore[i] == '1')
                         ris += (int)Math.Pow(2, exp);
+                    else if (valore[i] != '0') ;
+                    throw new Exception("non si possono inserisce valori diversi da 0 a 1");
+                    exp++;
                 }
                 TxtConverti.Text = $"{ris}";
                 //int ris = Convert.ToInt32(n, 2);
-               // TxtConverti.Text= ris.ToString(); 
+                // TxtConverti.Text= ris.ToString(); 
             }
-            else if(cmbName.SelectedIndex==1)
+            else if (cmbName.SelectedIndex == 1)
             {
                 int a = int.Parse(n);
                 string ris = " ";
@@ -66,7 +69,10 @@ namespace Converisone
                 //string ris = Convert.ToString(a,2);
                 TxtConverti.Text = ris.ToString();
             }
-       
+            catch (Exception ex)
+            {
+                MessageBox.Show("non si possono inseriserire valori diversi  da 0a1");
+            }
         }
     }
 }
